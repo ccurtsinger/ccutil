@@ -1,4 +1,4 @@
 gtest-1.7.0
 gtest-1.7.0.zip
-tests/triemap/runner
-tests/triemap/test_detail.xml
+tests/*/runner
+tests/*/test_detail.xml

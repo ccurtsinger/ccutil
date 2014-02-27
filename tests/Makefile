@@ -1,6 +1,6 @@
 ROOT = ..
 
 RECURSIVE_TARGETS = test
-DIRS = triemap
+DIRS = triemap wrapped_array
 
 include $(ROOT)/common.mk
