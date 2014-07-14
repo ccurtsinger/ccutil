@@ -21,6 +21,10 @@ namespace cppgoodies {
     wrapped_array<T> slice(size_t start, size_t end) {
       return wrapped_array<T>(&_base[start], end - start);
     }
+    
+    operator T*() {
+      return _base;
+    }
   
     // Iterator class for convenient range-based for loop support
     class iterator {
