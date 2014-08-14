@@ -1,7 +1,7 @@
-#if !defined(CPPGOODIES_WRAPPED_ARRAY_H)
-#define CPPGOODIES_WRAPPED_ARRAY_H
+#if !defined(CCUTIL_WRAPPED_ARRAY_H)
+#define CCUTIL_WRAPPED_ARRAY_H
 
-namespace cppgoodies {
+namespace ccutil {
   template<class T> class wrapped_array {
   private:
     T* _base;

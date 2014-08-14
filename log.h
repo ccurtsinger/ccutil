@@ -1,9 +1,9 @@
-#if !defined(CPPGOODIES_LOG_H)
-#define CPPGOODIES_LOG_H
+#if !defined(CCUTIL_LOG_H)
+#define CCUTIL_LOG_H
 
 #include <iostream>
 
-namespace cppgoodies {
+namespace ccutil {
   static const char* InfoColor = "\033[01;34m";
   static const char* WarningColor = "\033[01;33m";
   static const char* FatalColor = "\033[01;31m";
@@ -64,19 +64,19 @@ namespace cppgoodies {
 }
 
 #if defined(NDEBUG)
-#  define LOG(color, exit) (cppgoodies::logger(exit) << color)
-#  define INFO (cppgoodies::logger_base())
-#  define ASSERT(cond) (cppgoodies::logger_base())
+#  define LOG(color, exit) (ccutil::logger(exit) << color)
+#  define INFO (ccutil::logger_base())
+#  define ASSERT(cond) (ccutil::logger_base())
 #else
-#  define LOG(color, exit) (cppgoodies::logger(exit) << cppgoodies::SourceColor << "[" << __FILE__ << ":" << __LINE__ << "] " << color)
-#  define INFO LOG(cppgoodies::InfoColor, false)
-#  define ASSERT(cond) (cond) ? cppgoodies::logger_base() : FATAL
+#  define LOG(color, exit) (ccutil::logger(exit) << ccutil::SourceColor << "[" << __FILE__ << ":" << __LINE__ << "] " << color)
+#  define INFO LOG(ccutil::InfoColor, false)
+#  define ASSERT(cond) (cond) ? ccutil::logger_base() : FATAL
 #endif
 
-#define WARNING LOG(cppgoodies::WarningColor, false)
-#define PREFER(cond) (cond) ? cppgoodies::logger_base() : WARNING
+#define WARNING LOG(ccutil::WarningColor, false)
+#define PREFER(cond) (cond) ? ccutil::logger_base() : WARNING
 
-#define FATAL LOG(cppgoodies::FatalColor, true)
-#define REQUIRE(cond) (cond) ? cppgoodies::logger_base() : FATAL
+#define FATAL LOG(ccutil::FatalColor, true)
+#define REQUIRE(cond) (cond) ? ccutil::logger_base() : FATAL
 
 #endif

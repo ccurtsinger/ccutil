@@ -1,10 +1,10 @@
-#if !defined(CPPGOODIES_TRIEMAP_H)
-#define CPPGOODIES_TRIEMAP_H
+#if !defined(CCUTIL_TRIEMAP_H)
+#define CCUTIL_TRIEMAP_H
 
 #include <cstdio>
 #include <cstdlib>
 
-namespace cppgoodies {
+namespace ccutil {
     constexpr size_t min(size_t x, size_t y) {
         return x > y ? y : x;
     }

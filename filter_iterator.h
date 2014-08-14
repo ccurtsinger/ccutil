@@ -1,7 +1,7 @@
-#if !defined(CPPGOODIES_FILTER_ITERATOR_H)
-#define CPPGOODIES_FILTER_ITERATOR_H
+#if !defined(CCUTIL_FILTER_ITERATOR_H)
+#define CCUTIL_FILTER_ITERATOR_H
 
-namespace cppgoodies {
+namespace ccutil {
   template<class C, class F> class filterer {
   private:
     C _collection;
