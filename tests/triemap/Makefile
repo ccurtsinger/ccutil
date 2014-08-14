@@ -1,4 +1,4 @@
-ROOT = ../..
+ROOT = ..
 include $(ROOT)/common.mk
 
 test: runner

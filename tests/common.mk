@@ -1,4 +1,4 @@
-INCLUDE_PATHS += $(ROOT)/include $(ROOT)/gtest/include
+INCLUDE_PATHS += $(ROOT)/.. $(ROOT)/gtest/include
 TESTS_DIR = $(ROOT)/tests
 DIRS ?= 
 
