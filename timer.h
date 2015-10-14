@@ -1,6 +1,7 @@
 #if !defined(CCUTIL_TIMER_H)
 #define CCUTIL_TIMER_H
 
+#include <string.h>
 #include <time.h>
 
 #include "log.h"
@@ -11,14 +12,12 @@ public:
   timer() : _initialized(false) {}
   
   timer(int sig) {
-    struct sigevent ev = {
-      .sigev_notify = SIGEV_THREAD_ID,
-      .sigev_signo = sig,
-      ._sigev_un = {
-        ._tid = gettid()
-      }
-    };
-    
+    struct sigevent ev;
+    memset(&ev, 0, sizeof(ev));
+    ev.sigev_notify = SIGEV_THREAD_ID;
+    ev.sigev_signo = sig;
+    ev._sigev_un._tid = gettid();
+
     REQUIRE(timer_create(CLOCK_THREAD_CPUTIME_ID, &ev, &_timer) == 0)
         << "Failed to create timer!";
     
@@ -48,18 +47,14 @@ public:
     
     long ns = time_ns % 1000000000;
     time_t s = (time_ns - ns) / 1000000000;
-    
-    struct itimerspec ts = {
-      .it_interval = {
-        .tv_sec = s,
-        .tv_nsec = ns
-      },
-      .it_value = {
-        .tv_sec = s,
-        .tv_nsec = ns
-      }
-    };
-    
+
+    struct itimerspec ts;
+    memset(&ts, 0, sizeof(ts));
+    ts.it_interval.tv_sec = s;
+    ts.it_interval.tv_nsec = ns;
+    ts.it_value.tv_sec = s;
+    ts.it_value.tv_nsec = ns;
+
     REQUIRE(timer_settime(_timer, 0, &ts, NULL) == 0) << "Failed to start interval timer";
     
     _initialized = true;
@@ -70,14 +65,12 @@ public:
     
     long ns = time_ns % 1000000000;
     time_t s = (time_ns - ns) / 1000000000;
-    
-    struct itimerspec ts = {
-      .it_value = {
-        .tv_sec = s,
-        .tv_nsec = ns
-      }
-    };
-    
+
+    struct itimerspec ts;
+    memset(&ts, 0, sizeof(ts));
+    ts.it_value.tv_sec = s;
+    ts.it_value.tv_nsec = ns;
+
     REQUIRE(timer_settime(_timer, 0, &ts, NULL) == 0) << "Failed to start one-shot timer";
   }
   
