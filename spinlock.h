@@ -7,7 +7,7 @@ class spinlock {
 public:
   inline void lock() {
     while(_flag.test_and_set()) {
-      __asm__("pause");
+      __asm__ __volatile__ ("pause");
     }
   }
   
